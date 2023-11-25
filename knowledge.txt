@@ -19,3 +19,17 @@ It helps in avoiding the tedious process of passing props through multiple layer
 Redux is powerful for managing global state across an entire application, enforcing strict patterns for state management, while createContext in React is more lightweight and focused on sharing data within a specific subtree of components, offering simplicity and flexibility but not intended for global state management. Choosing between them depends on the scale and complexity of state management required in your application.
 
 */
+
+
+
+/*
+
+useMemo - to improve the performance of our component.
+- It allows us to hold the result of some function in cache and now whenever our function execute with same set of parameter instead of executing it again we get the result from cache.
+- In react two hooks are designed for memoization : useMemo & useCallback
+
+# Problem - If in a component one state gets changed than that state will rerendered all the state in its component. To avoid this unncessary rendering we use useMemo.
+
+
+
+*/
