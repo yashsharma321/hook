@@ -1,8 +1,9 @@
 import "./App.css";
+import Todos from './useReducer/useReducerHook';
 
 function App() {
   return <div>
-    <h2>Hello World</h2>
+    <Todos/>
   </div>;
 }
 
