@@ -1,3 +1,5 @@
+import { TODOS_ACTION } from "./useReducerHook";
+
 const TodoList = (props) => {
   return (
     <>
@@ -8,7 +10,7 @@ const TodoList = (props) => {
             <button
               className="btn btn-warning btn-sm ms-2"
               onClick={props.dispatch.bind(this, {
-                type: "delete_task",
+                type: TODOS_ACTION.DELETE_TASK,
                 payload: task.id,
               })}
             >
