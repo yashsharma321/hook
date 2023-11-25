@@ -1,12 +1,13 @@
 import { useContext } from "react";
+import UserContext from "../context/UserContext";
 
 const Details = () => {
-  const user = useContext(UserContext);
+  const { updateName } = useContext(UserContext);
 
   return (
     <div>
       <h6>Details</h6>
-      <p>`Hello ${user}!`</p>
+      <button onClick={() => updateName("Jai Shree Ram")}>Update Name</button>
     </div>
   );
 };

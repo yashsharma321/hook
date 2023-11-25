@@ -1,19 +1,20 @@
-import Users from "/users";
-import { useState, createContext } from "react";
-
-const UserContext = createContext();
-// export const UserContext = createContext(); we can import from App.js and provide globally.
+import Users from "./users";
+import UserContext from "../context/UserContext";
+import { useState } from "react";
 
 const UsersDashboard = () => {
-  const [user, setUser] = useState("Jai Shree Ram");
+  const [user, setUser] = useState("Jai");
+
+  const data = {
+    username: user,
+    updateName: setUser,
+  };
 
   return (
-    <div>
+    <UserContext.Provider value={data}>
       <h4>useContext Hook</h4>
-      <UserContext.Provider value={user}>
-        <Users />
-      </UserContext.Provider>
-    </div>
+      <Users />
+    </UserContext.Provider>
   );
 };
 
