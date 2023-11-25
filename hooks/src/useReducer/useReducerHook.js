@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 import TodoList from "./todolist";
+import TodosContext from "../context/TodosContext";
 
 export const TODOS_ACTION = {
   ADD_TASK: "add_task",
@@ -35,48 +36,56 @@ const init = (initialState) => {
 const Todos = () => {
   const [todo, dispatch] = useReducer(reducer, initialState, init);
 
-  return (
-    <div className="container">
-      <div className="row text-center mt-5">
-        <div className="col-lg-4 offset-4">
-          <h4 className="text-primary mb-4">Todo List {todo.length}</h4>
+  const data = {
+    todo,
+    dispatch,
+  };
 
-          <div className="row">
-            <div className="col-lg-4">
-              <label className="form-label">Enter a task:</label>
-            </div>
-            <div className="col-lg-8">
-              <div className="input-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="taskInput"
-                  onBlur={(e) =>
-                    dispatch({
-                      type: TODOS_ACTION.ADD_TASK,
-                      payload: e.target.value,
-                    })
-                  }
-                />
-                <button
-                  className="btn btn-info"
-                  onClick={() =>
-                    dispatch({
-                      type: TODOS_ACTION.RESET_TASK,
-                      payload: initialState,
-                    })
-                  }
-                >
-                  Reset
-                </button>
+  return (
+    <TodosContext.Provider value={data}>
+      <div className="container">
+        <div className="row text-center mt-5">
+          <div className="col-lg-4 offset-4">
+            <h4 className="text-primary mb-4">Todo List {todo.length}</h4>
+
+            <div className="row">
+              <div className="col-lg-4">
+                <label className="form-label">Enter a task:</label>
+              </div>
+              <div className="col-lg-8">
+                <div className="input-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="taskInput"
+                    onBlur={(e) =>
+                      dispatch({
+                        type: TODOS_ACTION.ADD_TASK,
+                        payload: e.target.value,
+                      })
+                    }
+                  />
+                  <button
+                    className="btn btn-info"
+                    onClick={() =>
+                      dispatch({
+                        type: TODOS_ACTION.RESET_TASK,
+                        payload: initialState,
+                      })
+                    }
+                  >
+                    Reset
+                  </button>
+                </div>
               </div>
             </div>
+            <hr />
+            {/* <TodoList todo={todo} dispatch={dispatch} /> */}
+            <TodoList />
           </div>
-          <hr />
-          <TodoList todo={todo} dispatch={dispatch} />
         </div>
       </div>
-    </div>
+    </TodosContext.Provider>
   );
 };
 
