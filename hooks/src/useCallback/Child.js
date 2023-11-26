@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 
-function Child() {
+function Child(props) {
+  const { callback } = props;
   console.log("Child Component");
   return (
     <div className="my-5">
@@ -10,6 +11,13 @@ function Child() {
 }
 
 export default memo(Child);
+
+/**
+ * When we accept any props from parent component
+ * then also child component gets rerendered even 
+ * though we have used memo(Child). In such case
+ * we use useCallback Hook in parent component.
+ */
 
 /* 
 Counter's state gets updated so the component gets

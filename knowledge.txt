@@ -36,10 +36,21 @@ useMemo - to improve the performance of our component.
 
 /*
 
-Problem - Whenever a state in parent component gets updated automatically the parent component along with its Child component gets re-rendered. To prevent the child component from getting rerendered we use:
+Problem 1 - Whenever a state in parent component gets updated automatically the parent component along with its Child component gets re-rendered. To prevent the child component from getting rerendered we use:
 
 export default memo(Child);
 
 This prevent Child component re-render.
+
+Problem 2 - When we pass a function from parent component to child component as props, and any state change happens in parent component will rerender the child component.
+
+const counterProps = () => { // function body };
+
+const counterProps = useCallback(
+  () => {
+    // function body
+  },
+  [depended1, depended2]
+);
 
 */
