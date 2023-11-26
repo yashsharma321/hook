@@ -30,6 +30,16 @@ useMemo - to improve the performance of our component.
 
 # Problem - If in a component one state gets changed than that state will rerendered all the state in its component. To avoid this unncessary rendering we use useMemo.
 
+*/
 
+
+
+/*
+
+Problem - Whenever a state in parent component gets updated automatically the parent component along with its Child component gets re-rendered. To prevent the child component from getting rerendered we use:
+
+export default memo(Child);
+
+This prevent Child component re-render.
 
 */
